@@ -1,10 +1,9 @@
 import {Router} from "express"
 import {userController} from "../controllers/user_ctrl.js"
 import multer from "multer"
-const upload = multer({dest:'uploads/'})
-
 
 const router = Router()
+const upload = multer({dest:'uploads/'})
 
 router.get('/',userController.getUsers)
 router.param('id',userController.getParam)

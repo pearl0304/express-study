@@ -48,16 +48,19 @@ export const userController = {
             res.send(req.user)
         }else if(resMimeType === 'html'){
             res.render('user_feed',{
+                user_no : req.params.id,
                 user_id : req.user.user_id,
                 nick: req.user.nick,
-                user_no : req.params.id
+                profileImageURL : `/uploads/${req.user.profileImageKey}`             
             })
         }        
     },
     
     postProfile:(req, res)=>{
-        console.log(req.file)
-        res.send('user profile image upload')
+        const { user } = req
+        const {filename} = req.file 
+        user.profileImageKey = filename
+        res.send(`user profile image upload : ${filename}`)
     },
 
     post: (req,res)=>{

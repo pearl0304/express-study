@@ -8,6 +8,8 @@ html(lang="ko")
         link(rel="stylesheet" href="/public/css/index.css")
     body 
     h3=`${nick}님의 Feed`
+    h3=profileImageURL
+    img(src=profileImageURL).profileImage
     form(action=`/user/${user_no}/profile` method="post" enctype="multipart/form-data")
         input(type="file" name="userProfile")
         button Upload Photo 
