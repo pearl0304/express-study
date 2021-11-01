@@ -5,17 +5,17 @@ const users = {
     1:{
         user_id : 'kylie',
         nick : 'hello_kylie',
-        profileImage : undefined
+        profileImageKey : undefined
     },
     2:{
         user_id : 'joy',
         nick: 'sunshine_joy',
-        profileImage : undefined
+        profileImageKey : undefined
     },
     3:{
         user_id : 'kate',
         nick : 'pretty_kate',
-        profileImage : undefined
+        profileImageKey : undefined
     }
 }
 
@@ -28,7 +28,7 @@ export const userController = {
     getParam:async(req,res,next,value)=>{
         try{
             const user =users[value]
-            console.log(user)
+            // console.log(user)
             if(!user){
                 const err = new Error()
                 err.statusCode = 404
@@ -55,9 +55,10 @@ export const userController = {
         }        
     },
     
-    postProfile:(upload.single('userProfile'),(req, res)=>{
+    postProfile:(req, res)=>{
+        console.log(req.file)
         res.send('user profile image upload')
-    }),
+    },
 
     post: (req,res)=>{
         res.send('post 방식')}
