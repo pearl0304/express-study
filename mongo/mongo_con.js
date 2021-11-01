@@ -13,10 +13,12 @@ main()
 async function main(){
     await client.connect()
 
+    // create document
     const users = client.db("test").collection("users");
     const cities = client.db("test").collection("cities")
     
-    await users.deleteMany({}) // 실행될때마다 삭제됨
+
+    await users.deleteMany({}) 
     await cities.deleteMany({})
 
     await cities.insertMany([
@@ -76,6 +78,8 @@ async function main(){
     //     }
     // )
 
+
+    // city 이름으로 user와 필드 합치기
     const cursor = users.aggregate([
         {
             $lookup:{
